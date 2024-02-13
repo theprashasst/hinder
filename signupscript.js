@@ -16,6 +16,8 @@
 
       var contactFormDB=firebase.database().ref("contactForm");
 
+      var crushersFormDB=firebase.database().ref("crushForm");
+
 
     // Listen for the form submission
     document.getElementById("contactForm").addEventListener('submit',submitForm);
@@ -36,6 +38,9 @@
         
          
         saveLoginForm(fullName,enrollmentNumber,branch,year,gender,instagram,password);
+
+        saveCrushForm(enrollmentNumber);
+
         window.location.href = `crushfetcher.html?gender=${gender}`;
         alert('Saved');
         
@@ -48,22 +53,57 @@
       const saveLoginForm=(fullName,enrollmentNumber,branch,year,gender,instagram,password) =>{
         // var newContactForm=contactFormDB.push();
         var enrollmentRef = contactFormDB.child(enrollmentNumber);
-
-        enrollmentRef.set({
-            fullName:fullName,
-            enrollmentNumber:enrollmentNumber,
-            branch:branch,
-            year:year,
-            gender:gender,
-            instagram:instagram,
-            password:password,
-        },(error) => {
-          if (error) {
-              console.error("Error saving data:", error);
+          
+        enrollmentRef.once('value', (snapshot) => {
+          console.log('Snapshot:', snapshot.val());
+      
+          if (snapshot.exists()) {
+              // Enrollment number already exists, handle accordingly
+              alert("Enrollment number already exists. Please choose a different one.");
           } else {
-              console.log("Data saved successfully.");
-              
-          }})
+            enrollmentRef.set({
+              fullName:fullName,
+              enrollmentNumber:enrollmentNumber,
+              branch:branch,
+              year:year,
+              gender:gender,
+              instagram:instagram,
+              password:password,
+          },(error) => {
+            if (error) {
+                console.error("Error saving data:", error);
+            } else {
+                console.log("Data saved successfully.");
+                
+            }})
+        }
+          }
+        )
+      }
+
+      const saveCrushForm=(enrollmentNumber)=>{
+        console.log('Trying to save to crushForm:', enrollmentNumber);
+
+        var enrollmentRef = crushersFormDB.child(enrollmentNumber);
+
+        enrollmentRef.once('value', (snapshot) => {
+          console.log('Snapshot:', snapshot.val());
+      
+          if (snapshot.exists()) {
+              // Enrollment number already exists, handle accordingly
+              alert("Enrollment number already exists. Please choose a different one.");
+          } else {
+            enrollmentRef.set({
+              enrollmentNumber:enrollmentNumber,
+            },(error) => {
+              if (error) {
+                  console.error("Error saving data:", error);
+              } else {
+                  console.log("Data saved successfully.");
+                  
+              }})
+            }
+          })
       }
 
       const getElementVal=(id) =>{
