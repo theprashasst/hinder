@@ -66,7 +66,7 @@
           
         enrollmentRef.once('value', (snapshot) => {
           console.log('Snapshot:', snapshot.val());
-      
+        
           if (snapshot.exists()) {
               // Enrollment number already exists, handle accordingly
               alert("Enrollment number already exists. Please choose a different one.");
@@ -89,7 +89,8 @@
                 window.location.replace(`crushfetcher.html?gender=${gender}`);
                 
                 
-            }})
+            }
+          })
         }
           }
         )

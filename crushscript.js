@@ -1,6 +1,3 @@
-// Initialize Firebase (replace with your own Firebase configuration)
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyARP2p48tmeZQWiPJv_Ho5ldOJVfC2BKAA",
     authDomain: "hinder-7102d.firebaseapp.com",
@@ -10,17 +7,17 @@ const firebaseConfig = {
     messagingSenderId: "219761938962",
     appId: "1:219761938962:web:a331f962d7d5359bddfecb",
     measurementId: "G-KNR89KP1RJ"
-  };
+};
 
 firebase.initializeApp(firebaseConfig);
-var crushersFormDB = firebase.database().ref("crushForm");
+const db = firebase.database();
 
 const el = document.getElementById("crushForm");
 if (el) {
-  el.addEventListener('submit', submitCrushForm);
+    el.addEventListener('submit', submitCrushForm);
 }
 
-// document.getElementById("crushForm").addEventListener('submit', submitCrushForm);
+
 
 function submitCrushForm(e) {
     e.preventDefault();
@@ -33,13 +30,16 @@ function submitCrushForm(e) {
     document.getElementById('crushForm').reset();
 }
 
+var selectElement = document.getElementById("suggestionsDropdown");
+var crushersFormDB = db.ref("crushForm");
+
 function saveCrushForm(crushName) {
-    // Use a unique identifier for each crush (you can replace this with your own logic)
+    
     var crushId = generateUniqueCrushId();
 
-    var crushRef = crushersFormDB.child(crushId);
+    var crushRef = ref(crushersFormDB, crushId);
 
-    crushRef.set({
+    set(crushRef, {
         crushName: crushName
     }, (error) => {
         if (error) {
@@ -50,8 +50,34 @@ function saveCrushForm(crushName) {
     });
 }
 
-function generateUniqueCrushId() {
-    // Add your logic to generate a unique identifier for each crush (e.g., using timestamps, random strings, etc.)
-    // For simplicity, let's use the current timestamp as a unique identifier
-    return new Date().getTime().toString();
+function populateDropdown() {
+    var dbRef = firebase.database().ref("contactForm");
+
+    // Use ref() to get a database reference
+    dbRef.get().then((snapshot) => {
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            Object.entries(data).forEach(([enrollmentNumber, childSnapshot]) => {
+                var fullName = childSnapshot.fullName;
+                console.log("fullname is", fullName);
+                var optionElement = document.createElement('option');
+                optionElement.value = enrollmentNumber;
+                optionElement.textContent = fullName;
+                selectElement.appendChild(optionElement);
+            });
+        }
+    }).catch((error) => {
+        console.error("Error getting data:", error);
+        alert("Error getting data:", error.message);
+    });
 }
+
+window.addEventListener('load', () => {
+    populateDropdown();
+});
+
+
+
+    function generateUniqueCrushId() {
+        return new Date().getTime().toString();
+    }
