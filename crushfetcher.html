@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who's your crush</title>
+    <link rel="stylesheet" href="signstyles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js"></script>
+    <script src="https://leaverou.github.io/awesomplete/awesomplete.min.js" async></script>
+    <link rel="stylesheet" href="https://leaverou.github.io/awesomplete/base.css" async>
+    <script src="../static/crushscript.js"></script>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner">
+            <header class="crush-header">
+                <h1 class="connect1">CRUSH</h1>
+                <p>Select any 5 of your crushes</p>
+            </header>
+            <main class="signup-body">
+                <form id="crushForm">
+                    <!-- Existing form elements -->
+
+                    <div class="input-group">
+                        <label for="oppositeGender">Type the names of your crushes:</label>
+                        <input type="text" id="crushInput" class="awesomplete" data-list="" placeholder="Start typing...">
+                    </div>
+
+                    <div class="input-group">
+                        <input class="submit" type="submit" value="Submit">
+                    </div>
+                </form>
+                <!-- Additional form for setting up a new crush -->
+                <form id="setupCrushForm" style="display: none;">
+                    <!-- New form elements for setting up a new crush -->
+                </form>
+                <footer class="signup-fotor">
+                    <p>Already Connected? <a style="text-decoration: none;" href="\WebDevLearn\Portfolio\index.html">Skip</a></p>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <script>
+        // You can add your Firebase and other scripts here
+        // Initialize Firebase and other logic
+    </script>
+</body>
+</html>

