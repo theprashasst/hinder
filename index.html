@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="signstyles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+
+    
+</head>
+<body> 
+    <div class="outer">
+        <div class="inner">
+            <header class="signup-header">
+                <h1 class="connect1">Login to see your CRUSH</h1>
+                <p>Your crush is waiting for you</p>
+            </header>
+            <main class="signup-body">
+                <form action="" id="contactForm">
+
+                    <div class="input-group">
+                        <label for="FullName">Full Name</label>
+                        <input name="FullName" id="FullName" type="text" placeholder="Full Name" value="">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="EnrollmentNumber">Enrollment Number</label>
+                        <input name="EnrollmentNumber" id="EnrollmentNumber" type="text" placeholder="Enrollment Number" value="">
+                    </div>
+
+                    
+
+                    <div class="input-group">
+                        <label for="Branch">Branch</label>
+                        <select name="Branch" id="Branch">
+                            <option value="CSE">CSE</option>
+                            <option value="IT">IT</option>
+                            <option value="AI">AI</option>
+                            <option value="EC">EC</option>
+                            <option value="EE">EE</option>
+                            <option value="IP">IP</option>
+                            <option value="MECH">MECH</option>
+                            <option value="MT">MT</option>
+                            <option value="CIVIL">CIVIL</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Year">Year</label>
+                        <select name="Year" id="Year">
+                            <option value="1st">1st Year</option>
+                            <option value="2nd">2nd Year</option>
+                            <option value="3rd">3rd Year</option>
+                            <option value="4th">4th Year</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Gender">Gender</label>
+                        <select name="Gender" id="Gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Instagram">Instagram Username</label>
+                        <input name="Instagram" id="Instagram" type="text" placeholder="Instagram Username" value="">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Password">Password</label>
+                        <input id="Password" type="password" placeholder="Password" value="">
+                    </div>
+
+                    <div class="input-group">
+                        <input class="submit" type="submit">
+                    </div>
+                </form>
+                <footer class="signup-fotor">
+                    <p>Already Connected? <a style="text-decoration: none;" href="\WebDevLearn\Portfolio\index.html">Skip</a></p>
+                </footer>
+            </main>
+        </div>
+    </div>
+    <script src="signupscript.js"></script>
+</body>
+</html>
