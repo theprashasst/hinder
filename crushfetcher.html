@@ -13,7 +13,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://leaverou.github.io/awesomplete/awesomplete.min.js" async></script>
     <link rel="stylesheet" href="https://leaverou.github.io/awesomplete/base.css" async>
-    <script src="crushscript.js"></script>
+    <script type="module" src="crushscript.js" ></script>
     
 </head>
 <body>
@@ -31,6 +31,9 @@
                         <p>Type the names of your crushes:</p>
                         <!-- <label for="oppositeGender">Type the names of your crushes:</label> -->
                         <input type="text" id="crushInput" class="awesomplete" data-list="Prashasst" placeholder="Start typing...">
+                        <select id="suggestionsDropdown">
+                            <option value="suggestionsDropdown">Satendra</option>
+                        </select>
                     </div>
 
                     <div class="input-group">
