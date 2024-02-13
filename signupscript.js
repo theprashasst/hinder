@@ -13,16 +13,18 @@
       firebase.initializeApp(firebaseConfig);
 
       //refrence for firebase
-
       var contactFormDB=firebase.database().ref("contactForm");
-
       var crushersFormDB=firebase.database().ref("crushForm");
+
+  
+
+      
 
 
     // Listen for the form submission
     document.getElementById("contactForm").addEventListener('submit',submitForm);
 
-      function submitForm(e){
+      async function submitForm(e){
         
         e.preventDefault();
 
@@ -35,23 +37,31 @@
         var instagram = getElementVal('Instagram');
         var password = getElementVal('Password');
 
+        try{
+          
+          saveCrushForm(enrollmentNumber);
+          
+          await saveLoginForm(fullName,enrollmentNumber,branch,year,gender,instagram,password);
+          
+          
+
+          
+          document.getElementById('contactForm').reset();
+          
         
-         
-        saveLoginForm(fullName,enrollmentNumber,branch,year,gender,instagram,password);
-
-        saveCrushForm(enrollmentNumber);
-
-        window.location.href = `crushfetcher.html?gender=${gender}`;
-        alert('Saved');
-        
-
-        document.getElementById('contactForm').reset();
+        }catch (error) {
+          console.error("Error during form submission:", error);
+          alert('Error during form submission. Please try again.');
+      }
+     
 
 
       }
-
+    
       const saveLoginForm=(fullName,enrollmentNumber,branch,year,gender,instagram,password) =>{
         // var newContactForm=contactFormDB.push();
+        return new Promise((resolve, reject) => {
+          console.log('Trying to save to contactForm:', fullName);
         var enrollmentRef = contactFormDB.child(enrollmentNumber);
           
         enrollmentRef.once('value', (snapshot) => {
@@ -74,14 +84,21 @@
                 console.error("Error saving data:", error);
             } else {
                 console.log("Data saved successfully.");
+                alert('Saved');
+                console.log("trying to navigate to crushfetcher");
+                window.location.replace(`crushfetcher.html?gender=${gender}`);
+                
                 
             }})
         }
           }
         )
+        }
+        )
       }
 
       const saveCrushForm=(enrollmentNumber)=>{
+        return new Promise((resolve, reject) => {
         console.log('Trying to save to crushForm:', enrollmentNumber);
 
         var enrollmentRef = crushersFormDB.child(enrollmentNumber);
@@ -104,6 +121,7 @@
               }})
             }
           })
+        })
       }
 
       const getElementVal=(id) =>{
