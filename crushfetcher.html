@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who's your crush</title>
     <link rel="stylesheet" href="signstyles.css">
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://leaverou.github.io/awesomplete/awesomplete.min.js" async></script>
     <link rel="stylesheet" href="https://leaverou.github.io/awesomplete/base.css" async>
     <script src="crushscript.js"></script>
+    
 </head>
 <body>
     <div class="outer">
@@ -21,16 +24,17 @@
                 <p>Select any 5 of your crushes</p>
             </header>
             <main class="signup-body">
-                <form id="crushForm">
+                <form action="" id="crushForm">
                     <!-- Existing form elements -->
 
                     <div class="input-group">
-                        <label for="oppositeGender">Type the names of your crushes:</label>
-                        <input type="text" id="crushInput" class="awesomplete" data-list="" placeholder="Start typing...">
+                        <p>Type the names of your crushes:</p>
+                        <!-- <label for="oppositeGender">Type the names of your crushes:</label> -->
+                        <input type="text" id="crushInput" class="awesomplete" data-list="Prashasst" placeholder="Start typing...">
                     </div>
 
                     <div class="input-group">
-                        <input class="submit" type="submit" value="Submit">
+                        <input class="submit" type="submit">
                     </div>
                 </form>
                 <!-- Additional form for setting up a new crush -->
@@ -43,9 +47,6 @@
             </main>
         </div>
     </div>
-    <script>
-        // You can add your Firebase and other scripts here
-        // Initialize Firebase and other logic
-    </script>
+    
 </body>
 </html>
