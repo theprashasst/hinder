@@ -26,8 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         // Add your logic to handle crush form submission
     });
+    console.log("HI");
 
-    // Handle setup crush form submission
+    // Handle setup crush form submission pranjay
     document.getElementById('setupCrushForm').addEventListener('submit', function (event) {
         event.preventDefault();
         // Add your logic to handle setting up a new crush and saving to the database
